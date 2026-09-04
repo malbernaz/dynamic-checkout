@@ -1,0 +1,24 @@
+---
+interface Props {
+  label: string;
+  value: string;
+  icon?: any;
+  negative?: boolean;
+  valueData?: string;
+}
+
+const { label, value, negative = false, valueData } = Astro.props;
+---
+
+<div class="flex items-center gap-3 py-3">
+  <slot name="icon" />
+  <span class="text-sm text-text-secondary">{label}</span>
+  <span class="flex-1" />
+  <span
+    class:list={[
+      "text-sm font-medium",
+      negative ? "text-success" : "text-text-primary"
+    ]}
+    data-value={valueData}
+  >{value}</span>
+</div>

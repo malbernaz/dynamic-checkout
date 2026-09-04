@@ -1,11 +1,42 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import CheckoutHeader from "../components/checkout/CheckoutHeader.astro";
+import CheckoutMobileHeader from "../components/checkout/CheckoutMobileHeader.astro";
+import ProductCard from "../components/checkout/ProductCard.astro";
+import SubscribeCard from "../components/checkout/SubscribeCard.astro";
+import ShippingForm from "../components/checkout/ShippingForm.astro";
+import PaymentForm from "../components/checkout/PaymentForm.astro";
+import OrderSummary from "../components/checkout/OrderSummary.astro";
+import CtaButton from "../components/checkout/CtaButton.astro";
+import TrustBadges from "../components/checkout/TrustBadges.astro";
+import StickyCta from "../components/checkout/StickyCta.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <CheckoutHeader />
+  <CheckoutMobileHeader />
+
+  <main class="mx-auto grid max-w-[1440px] grid-cols-1 gap-6 lg:grid-cols-[1fr_540px] lg:gap-8 px-4 py-6 pb-20 lg:px-8 lg:py-8 lg:pb-8">
+    <section class="flex flex-col gap-6">
+      <ProductCard />
+      <SubscribeCard />
+      <ShippingForm />
+      <PaymentForm />
+    </section>
+
+    <aside class="flex flex-col gap-6">
+      <OrderSummary />
+      <div class="hidden lg:block">
+        <CtaButton />
+      </div>
+      <TrustBadges />
+    </aside>
+  </main>
+
+  <StickyCta />
 </Layout>
+
+<script>
+  import { initCheckout } from "../lib/checkout";
+  initCheckout();
+</script>

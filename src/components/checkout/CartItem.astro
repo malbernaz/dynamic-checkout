@@ -1,0 +1,34 @@
+---
+import { Trash2 } from "@lucide/astro";
+import QuantityInput from "./QuantityInput.astro";
+
+interface Props {
+  name?: string;
+  subtitle?: string;
+  price?: string;
+  quantity?: number;
+}
+
+const {
+  name = "Calm Chews",
+  subtitle = "Daily calming soft-chew supplement for dogs",
+  price = "$29.99",
+  quantity = 1
+} = Astro.props;
+---
+
+<div class="flex flex-col gap-2">
+  <div class="flex items-start justify-between">
+    <div class="flex flex-col gap-1">
+      <h3 class="text-lg font-semibold text-text-primary">{name}</h3>
+      <p class="text-xs text-text-secondary">{subtitle}</p>
+    </div>
+    <button class="p-0.5 text-text-muted hover:text-text-secondary transition-colors" aria-label="Remove item">
+      <Trash2 size={20} />
+    </button>
+  </div>
+  <div class="flex items-center justify-between">
+    <QuantityInput value={quantity} />
+    <span class="text-base font-semibold text-primary" data-unit-price>{price}</span>
+  </div>
+</div>

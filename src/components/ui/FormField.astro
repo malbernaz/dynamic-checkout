@@ -1,0 +1,55 @@
+---
+interface Props {
+  label: string;
+  name?: string;
+  type?: astroHTML.JSX.HTMLInputTypeAttribute;
+  placeholder?: string;
+  class?: string;
+  gridClass?: string;
+  disabled?: boolean;
+  autocomplete?: string;
+  inputmode?: astroHTML.JSX.HTMLAttributes['inputmode'];
+  required?: boolean;
+}
+
+const {
+  label,
+  name,
+  type = "text",
+  placeholder,
+  class: className,
+  gridClass,
+  disabled,
+  autocomplete,
+  inputmode,
+  required
+} = Astro.props;
+---
+
+<div class:list={["flex flex-col gap-1.5", className]} data-field>
+  <label class="text-xs font-medium text-text-secondary" for={name}>
+    {label}{required && <span class="text-red-600"> *</span>}
+  </label>
+  <div
+    class:list={[
+      "flex items-center rounded-lg  px-3 py-2.5 border border-border",
+      gridClass,
+      disabled ? "bg-bg-input-disabled" : "bg-bg-input"
+    ]}
+    data-input-wrapper
+  >
+    <input
+      type={type}
+      name={name}
+      id={name}
+      placeholder={placeholder}
+      disabled={disabled}
+      autocomplete={autocomplete}
+      inputmode={inputmode}
+      aria-describedby={name ? `${name}-error` : undefined}
+      class="w-full bg-transparent text-sm text-text-primary placeholder:text-text-muted outline-none"
+    />
+    <slot />
+  </div>
+  {name && <p class="hidden text-xs text-red-600" data-error id={`${name}-error`}></p>}
+</div>

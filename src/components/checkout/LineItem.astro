@@ -1,0 +1,28 @@
+---
+import { Dog } from "@lucide/astro";
+
+interface Props {
+  name?: string;
+  unitPrice?: string;
+  quantity?: number;
+  subtotal?: string;
+}
+
+const {
+  name = "Calm Chews — 1 bag",
+  unitPrice = "$29.99",
+  quantity = 1,
+  subtotal = "$29.99"
+} = Astro.props;
+---
+
+<div class="flex items-center gap-4 py-4">
+  <div class="shrink-0 flex items-center justify-center w-14 h-14 rounded-xl bg-accent-soft/40">
+    <Dog size={28} class="text-primary" />
+  </div>
+  <div class="flex-1 min-w-0">
+    <p class="text-sm text-text-primary truncate" data-summary-name>{name}</p>
+    <p class="text-xs text-text-secondary mt-0.5" data-summary-unit>{unitPrice} × {quantity}</p>
+  </div>
+  <span class="text-sm font-semibold text-text-primary" data-summary-subtotal>{subtotal}</span>
+</div>

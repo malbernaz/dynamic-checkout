@@ -1,0 +1,32 @@
+---
+import { ChevronUp, ChevronDown } from "@lucide/astro";
+
+interface Props {
+  value?: number;
+}
+
+const { value = 1 } = Astro.props;
+---
+
+<div class="inline-flex items-center gap-2 rounded-lg border border-border bg-bg-card px-3 py-2.5">
+  <span class="text-sm font-medium text-text-primary tabular-nums min-w-[1.5ch] text-center" data-qty-value>{value}</span>
+  <div class="flex flex-col gap-1">
+    <button
+      type="button"
+      data-qty-increment
+      aria-label="Increase quantity"
+      class="disabled:opacity-40 disabled:cursor-not-allowed"
+    >
+      <ChevronUp size={12} class="text-text-secondary" />
+    </button>
+    <button
+      type="button"
+      data-qty-decrement
+      aria-label="Decrease quantity"
+      disabled
+      class="disabled:opacity-40 disabled:cursor-not-allowed"
+    >
+      <ChevronDown size={12} class="text-text-secondary" />
+    </button>
+  </div>
+</div>

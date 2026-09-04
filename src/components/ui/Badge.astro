@@ -1,0 +1,17 @@
+---
+import { Check } from "@lucide/astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class:list={[
+  "inline-flex items-center gap-2 rounded-full bg-accent-soft/40 px-3 py-1",
+  className
+]}>
+  <Check size={16} class="text-success" />
+  <slot />
+</div>

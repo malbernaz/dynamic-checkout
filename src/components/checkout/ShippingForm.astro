@@ -1,0 +1,26 @@
+---
+import { Truck } from "@lucide/astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import FormField from "../ui/FormField.astro";
+---
+
+<div class="rounded-2xl bg-bg-card p-5 lg:p-7 shadow-[0_2px_12px_rgba(27,58,107,0.08)]">
+  <SectionHeader class="mb-6">
+    <Truck size={20} class="text-primary" slot="leading" />
+    Shipping Information
+  </SectionHeader>
+  <form data-checkout-form novalidate>
+    <div class="flex flex-col gap-4">
+      <FormField label="Full Name" name="name" placeholder="Jane Smith" autocomplete="name" required />
+      <FormField label="Email Address" name="email" type="email" placeholder="jane@example.com" autocomplete="email" required />
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-4">
+        <FormField label="Street Address" name="street" placeholder="123 Main Street" autocomplete="street-address" required />
+        <FormField label="City" name="city" placeholder="Portland" autocomplete="address-level2" />
+      </div>
+      <div class="grid grid-cols-[200px_1fr] gap-4">
+        <FormField label="State" name="state" placeholder="OR" autocomplete="address-level1" />
+        <FormField label="ZIP Code" name="zip" placeholder="97201" autocomplete="postal-code" inputmode="numeric" />
+      </div>
+    </div>
+  </form>
+</div>

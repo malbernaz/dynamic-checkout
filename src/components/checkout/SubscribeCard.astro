@@ -1,0 +1,20 @@
+---
+import { PawPrint } from "@lucide/astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import Badge from "../ui/Badge.astro";
+import Toggle from "./Toggle.astro";
+---
+
+<div class="rounded-2xl bg-bg-card p-5 lg:p-7 shadow-[0_2px_12px_rgba(27,58,107,0.08)]">
+  <SectionHeader>
+    <PawPrint size={20} class="text-primary" slot="leading" />
+    Subscribe &amp; Save
+    <Toggle enabled={true} slot="trailing" />
+  </SectionHeader>
+  <p class="mt-4 max-w-md text-xs text-text-secondary">
+    Get 15% off every order. Cancel anytime — no commitment, no hassle.
+  </p>
+  <Badge class="mt-4">
+    <span class="text-sm text-success font-medium">Save 15% with subscription</span>
+  </Badge>
+</div>

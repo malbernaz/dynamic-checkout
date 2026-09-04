@@ -1,0 +1,27 @@
+---
+interface Props {
+  enabled?: boolean;
+}
+
+const { enabled = false } = Astro.props;
+---
+
+<button
+  type="button"
+  role="switch"
+  aria-checked={enabled}
+  aria-label="Subscribe & Save"
+  data-subscribe-toggle
+  class:list={[
+    "relative h-7 w-12 rounded-full transition-colors",
+    enabled ? "bg-primary" : "bg-border"
+  ]}
+>
+  <div
+    data-subscribe-knob
+    class:list={[
+      "absolute top-1 translate-x-1 t h-5 w-5 rounded-full bg-white shadow-sm transition-transform",
+      enabled && "translate-x-6"
+    ]}
+  />
+</button>

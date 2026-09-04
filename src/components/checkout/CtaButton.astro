@@ -1,0 +1,22 @@
+---
+import { Lock } from "@lucide/astro";
+
+interface Props {
+  label?: string;
+  class?: string;
+}
+
+const { label = "Subscribe & Save — $31.48", class: className = "" } = Astro.props;
+---
+
+<button
+  type="button"
+  data-cta
+  class:list={[
+    "w-full flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-text-on-primary transition-colors hover:bg-primary-light active:bg-primary-light/90",
+    className
+  ]}
+>
+  <Lock size={16} />
+  <span data-cta-label>{label}</span>
+</button>

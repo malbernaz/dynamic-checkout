@@ -1,0 +1,13 @@
+---
+import { PawPrint } from "@lucide/astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import ProductRow from "./ProductRow.astro";
+---
+
+<div class="rounded-2xl bg-bg-card p-5 lg:p-7 shadow-[0_2px_12px_rgba(27,58,107,0.08)]">
+  <SectionHeader class="mb-6">
+    <PawPrint size={20} class="text-primary" slot="leading" />
+    Your Cart
+  </SectionHeader>
+  <ProductRow />
+</div>
